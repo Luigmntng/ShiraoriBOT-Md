@@ -1,7 +1,7 @@
 {
-    "name": "ShiraoriBOT-Md",
+    "name": "eLbotZXD",
     "version": "0.4.5",
-    "description": "Simle Bot WhatsApp with Baileys Multi Device",
+    "description": "ini WM SUKI",
     "depecrated": false,
     "main": "index.js",
     "directories": {
@@ -29,10 +29,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ilmanhdyt/ShiraoriBOT-Md.git"
+        "url": "git+https://github.com/luigmntng/ShiraoriBOT-Md.git"
     },
     "bugs": {
-        "url": "https://github.com/ilmanhdyt/ShiraoriBOT-Md/issues"
+        "url": "https://github.com/luigmntng/ShiraoriBOT-Md/issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
