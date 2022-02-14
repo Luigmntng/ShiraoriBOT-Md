@@ -40,7 +40,7 @@
         "@adiwajshing/baileys-md": "github:ilmanhdyt/baileys#multi-device",
         "awesome-phonenumber": "^2.64.0",
         "axios": "^0.24.0",
-        "brainly-scraper-V2": "^1.1.2",
+        "brainly-scraper-v2": "^1.1.2",
         "@bochilteam/scraper": "^0.0.2",
         "cfonts": "^2.10.0",
         "chalk": "^4.1.2",
