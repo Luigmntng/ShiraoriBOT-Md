@@ -13,6 +13,7 @@ let tags = {
   'vote': 'MENU VOTE',
   'owner': 'MENU OWNER',
   'fun': 'MENU FUN',
+  'islam': 'MENU ISLAM',
   'sticker': 'MENU CONVERT',
   'maker': 'MENU MAKER',
   'github': 'MENU GITHUB',
@@ -44,13 +45,13 @@ const defaultMenu = {
 │ ✾ Role: %role
 ╰❑
 ╭─❑ 「 INFORMASI 」 ❑──
-│ Bot ini masih tahap beta
-│ apabila ada bug/eror harap
-│ lapor ke owner
+│ _*instagram = instagram.com/ahmdlui*_
+│ _*github = github.com/luigmntng*_
+│ jika ada fitur eror mohon *dimaklumi*
 ╰❑
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
-  body: '│ • %cmd %islimit %isPremium',
+  body: '│ > %cmd %islimit %isPremium',
   footer: '╰────\n',
   after: `
 *%npmname@^%version*
@@ -162,19 +163,19 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
          hydratedTemplate: {
            hydratedContentText: text.trim(),
            locationMessage: { 
-           jpegThumbnail: fs.readFileSync('./media/shiraori.jpg') },
+           jpegThumbnail: fs.readFileSync('./media/pp.jpg') },
            hydratedFooterText: wm,
            hydratedButtons: [{
              urlButton: {
-               displayText: '💠 Source Code',
-               url: 'https://github.com/ilmanhdyt/ShiraoriBOT-Md'
+               displayText: '💠 Official instagram',
+               url: 'https://instagram.com/ahmdlui'
              }
 
            },
              {
              callButton: {
                displayText: 'Nomor Owner',
-               PhoneNumber: '0813-5104-7727'
+               PhoneNumber: '0821-4609-2695'
              }
 
            },
@@ -194,8 +195,8 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
            },
            {
              quickReplyButton: {
-               displayText: '📍 Credits',
-               id: '.tqto',
+               displayText: '📍 Daftar',
+               id: '.daftar',
              }
            }]
          }
