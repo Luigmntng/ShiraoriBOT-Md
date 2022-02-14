@@ -1,82 +1,241 @@
-let { MessageType } = require('@adiwajshing/baileys-md')
-let handler = async (m, { conn, usedPrefix, DevMode }) => { 
-    try { 
-        let __timers = (new Date - global.db.data.users[m.sender].lastmining)
-        let _timers = (300000 - __timers) 
-        let timers = clockString(_timers)
-        if (global.db.data.users[m.sender].healt > 79) {
-            if (new Date - global.db.data.users[m.sender].lastadventure > 300000) {
-            let armor = global.db.data.users[m.sender].armor
-            let rubah = global.db.data.users[m.sender].rubah
-            let kuda = global.db.data.users[m.sender].kuda
-            let kucing = global.db.data.users[m.sender].kucing
-            let ____health = `${Math.floor(Math.random() * 101)}`.trim()
-            let ___health = (____health * 1)
-            let kucingnya = (kucing == 0? 0 : '' || kucing == 1 ? 5 : '' || kucing == 2 ? 10 : '' || kucing == 3 ? 15 : '' || kucing == 4 ? 21 : ''  || kucing == 5 ? 30 : '')
-            let armornya = (armor == 0 ? 0 : '' || armor == 1 ? 5 : '' || armor == 2 ? 10 : '' || armor == 3 ? 15 : '' || armor == 4 ? 21 : '' || armor == 5 ? 30 : '')
-            let __health = (___health > 60 ? ___health - kucingnya - armornya : ___health)
-            let healt = (kucing == 0 && armor == 0 ? pickRandom(['100', '99', '98', '97', '96', '95', '94', '93', '92', '91', '90']) : kucing > 0 && armor > 0 ? __health : ___health)
-            let _potion = `${Math.floor(Math.random() * 2)}`.trim()
-            let potion = (_potion * 1)
-            let _diamond = (rubah == 0 ? pickRandom(['0', '1', '0', '1', '0', '1', '0']) : '' || rubah == 1 ? pickRandom(['0', '1', '0', '1']) : '' || rubah == 2 ? pickRandom(['0', '1', '0', '1', '2']) : '' || rubah == 3 ? pickRandom(['0', '1', '0', '2', '2', '0']) : '' || rubah == 4 ? pickRandom(['0', '1', '1', '2', '1', '1', '0']) : '' || rubah == 5 ? pickRandom(['0', '0', '1', '2', '2', '1', '1', '0']) : '' )
-            let diamond = (_diamond * 1)
-            let _common = `${Math.floor(Math.random() * 3)}`.trim()
-            let common = (_common * 1)
-            let _uncommon = `${Math.floor(Math.random() * 2)}`.trim()
-            let uncommon = (_uncommon * 1) 
-            let _mythic = `${pickRandom(['1', '0', '0', '1'])}`
-            let mythic = (_mythic * 1)
-            let _legendary = `${pickRandom(['1', '0', '0', '0'])}`
-            let sampah = `${Math.floor(Math.random() * 300)}`.trim()
-            let legendary = (_legendary * 1)
-            let kayu =  `${Math.floor(Math.random() * 70)}`.trim() 
-            let batu =  `${Math.floor(Math.random() * 20)}`.trim() 
-            let iron = `${Math.floor(Math.random() * 20)}`.trim()
-            let exp = `${Math.floor(Math.random() * 20)}`.trim() 
-            let uang = `${Math.floor(Math.random() * 20)}`.trim() 
-            conn.reply(m.chat, '↓Mining:', m)
-            let str = `
-❤️ While mining you found:
-🔮Stone: ${batu}
-🔩Iron: ${iron}
-💵Gold: ${uang}
-⚜️Xp: ${exp}
-`.trim()
-            conn.reply(m.chat, str, m)
-            global.db.data.users[m.sender].kayu += kayu * 1
-            global.db.data.users[m.sender].batu += batu * 1
-            global.db.data.users[m.sender].iron += iron * 1
-            global.db.data.users[m.sender].exp += exp * 1
-            global.db.data.users[m.sender].money += uang * 1
-            global.db.data.users[m.sender].lastadventure = new Date * 1
-            } else conn.reply(m.chat, `Please wait  *${timers}* again`, m)
-        } else conn.reply(m.chat, 'minimum 80 healt to do mining', m)
-    } catch (e) {
-        console.log(e)
-        conn.reply(m.chat, 'Error', m)
-        if (DevMode) {
-            let file = require.resolve(__filename)
-            for (let jid of global.owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != conn.user.jid)) {
-                conn.sendMessage(jid, file + ' error\nNo: *' + m.sender.split`@`[0] + '*\nCommand: *' + m.text + '*\n\n*' + e + '*', MessageType.text)
-            }
-        }
-    }
+const { default: makeWASocket, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, downloadContentFromMessage, downloadHistory, proto, getMessage, generateWAMessageContent, prepareWAMessageMedia } = require('@adiwajshing/baileys-md')
+let fs = require('fs')
+let path = require('path')
+let levelling = require('../lib/levelling')
+let tags = {
+  'main': 'MENU UTAMA',
+  'game': 'MENU GAME',
+  'rpg': 'MENU RPG',
+  'xp': 'MENU EXP',
+  'premium': 'MENU PREMIUM',
+  'group': 'MENU GROUP',
+  'absen': 'MENU ABSEN',
+  'vote': 'MENU VOTE',
+  'owner': 'MENU OWNER',
+  'fun': 'MENU FUN',
+  'islam': 'MENU ISLAM',
+  'sticker': 'MENU CONVERT',
+  'maker': 'MENU MAKER',
+  'github': 'MENU GITHUB',
+  'internet': 'INTERNET',
+  'kerang': 'MENU KERANG',
+  'anime': 'MENU ANIME',
+  'downloader': 'DOWNLOADER',
+  'nsfw': 'MENU NSFW',
+  'tools': 'MENU TOOLS',
+  'advanced': 'ADVANCED',
+  'quotes': 'MENU QUOTES',
+  'info': 'MENU INFO',
 }
-handler.help = ['mine', 'mining']
-handler.tags = ['rpg']
-handler.command = /^(mine|mining)$/i
+const defaultMenu = {
+  before: `
+╭────ꕥ %me ꕥ────
+│✾ Version: %version
+│✾ Library: Baileys-MD
+│✾ Mode: ${global.opts['self'] ? 'Self' : 'publik'}
+│✾ Runtime: %uptime
+╰❑
+╭─❑ 「 INFO USER 」 ❑──
+│ ✾ Name: %name
+│ ✾ Status: ---
+│ ✾ Limit: %limit
+│ ✾ Money: %money
+│ ✾ Exp: %totalexp
+│ ✾ Level: %level
+│ ✾ Role: %role
+╰❑
+╭─❑ 「 INFORMASI 」 ❑──
+│ _*instagram = instagram.com/ahmdlui*_
+│ _*github = github.com/luigmntng*_
+│ jika ada fitur eror mohon *dimaklumi*
+╰❑
+%readmore`.trimStart(),
+  header: '╭─「 %category 」',
+  body: '│ > %cmd %islimit %isPremium',
+  footer: '╰────\n',
+  after: `
+*%npmname@^%version*
+${'```%npmdesc```'}
+`,
+}
+let handler = async (m, { conn, usedPrefix: _p }) => {
+  try {
+    let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
+    let who
+    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    else who = m.sender 
+    let user = global.db.data.users[who]
+    let { exp, limit, level, money, role } = global.db.data.users[m.sender]
+    let { min, xp, max } = levelling.xpRange(level, global.multiplier)
+    let name = conn.getName(m.sender)
+    let d = new Date(new Date + 3600000)
+    let locale = 'id'
+    // d.getTimeZoneOffset()
+    // Offset -420 is 18.00
+    // Offset    0 is  0.00
+    // Offset  420 is  7.00
+    let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
+    let week = d.toLocaleDateString(locale, { weekday: 'long' })
+    let date = d.toLocaleDateString(locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    })
+    let dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(d)
+    let time = d.toLocaleTimeString(locale, {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric'
+    })
+    let _uptime = process.uptime() * 1000
+    let _muptime
+    if (process.send) {
+      process.send('uptime')
+      _muptime = await new Promise(resolve => {
+        process.once('message', resolve)
+        setTimeout(resolve, 1000)
+      }) * 1000
+    }
+    let muptime = clockString(_muptime)
+    let uptime = clockString(_uptime)
+    let totalreg = Object.keys(global.db.data.users).length
+    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+    let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
+      return {
+        help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
+        tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
+        prefix: 'customPrefix' in plugin,
+        limit: plugin.limit,
+        premium: plugin.premium,
+        enabled: !plugin.disabled,
+      }
+    })
+    for (let plugin of help)
+      if (plugin && 'tags' in plugin)
+        for (let tag of plugin.tags)
+          if (!(tag in tags) && tag) tags[tag] = tag
+    conn.menu = conn.menu ? conn.menu : {}
+    let before = conn.menu.before || defaultMenu.before
+    let header = conn.menu.header || defaultMenu.header
+    let body = conn.menu.body || defaultMenu.body
+    let footer = conn.menu.footer || defaultMenu.footer
+    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Powered by https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let _text = [
+      before,
+      ...Object.keys(tags).map(tag => {
+        return header.replace(/%category/g, tags[tag]) + '\n' + [
+          ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
+            return menu.help.map(help => {
+              return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
+                .replace(/%islimit/g, menu.limit ? '(Limit)' : '')
+                .replace(/%isPremium/g, menu.premium ? '(Premium)' : '')
+                .trim()
+            }).join('\n')
+          }),
+          footer
+        ].join('\n')
+      }),
+      after
+    ].join('\n')
+    text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
+    let replace = {
+      '%': '%',
+      p: _p, uptime, muptime,
+      me: conn.user.name,
+      npmname: package.name,
+      npmdesc: package.description,
+      version: package.version,
+      exp: exp - min,
+      maxexp: xp,
+      totalexp: exp,
+      xp4levelup: max - exp,
+      github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
+      level, limit, money, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+      readmore: readMore
+    }
+    text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
+     const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+     templateMessage: {
+         hydratedTemplate: {
+           hydratedContentText: text.trim(),
+           locationMessage: { 
+           jpegThumbnail: fs.readFileSync('./media/pp.jpg') },
+           hydratedFooterText: wm,
+           hydratedButtons: [{
+             urlButton: {
+               displayText: '💠 Official instagram',
+               url: 'https://instagram.com/ahmdlui'
+             }
+
+           },
+             {
+             callButton: {
+               displayText: 'Nomor Owner',
+               PhoneNumber: '0821-4609-2695'
+             }
+
+           },
+               {
+             quickReplyButton: {
+               displayText: '🧒 Owner',
+               id: '.owner',
+             }
+
+           },
+               {
+             quickReplyButton: {
+               displayText: '💲 Donasi',
+               id: '.donasi',
+             }
+
+           },
+           {
+             quickReplyButton: {
+               displayText: '📍 Daftar',
+               id: '.daftar',
+             }
+           }]
+         }
+       }
+     }), { userJid: m.sender, quoted: m });
+    //conn.reply(m.chat, text.trim(), m)
+    return await conn.relayMessage(
+         m.chat,
+         template.message,
+         { messageId: template.key.id }
+     )
+  } catch (e) {
+    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    throw e
+  }
+}
+handler.help = ['menu']
+handler.tags = ['main']
+handler.command = /^(menu)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
+
+handler.admin = false
+handler.botAdmin = false
 
 handler.fail = null
+handler.exp = 3
 
 module.exports = handler
 
-function pickRandom(list) {
-    return list[Math.floor(Math.random() * list.length)]
-}
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4001)
+
 function clockString(ms) {
-  let h = Math.floor(ms / 3600000)
-  let m = Math.floor(ms / 60000) % 60
-  let s = Math.floor(ms / 1000) % 60
-  console.log({ms,h,m,s})
-  return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
