@@ -163,7 +163,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
          hydratedTemplate: {
            hydratedContentText: text.trim(),
            locationMessage: { 
-           jpegThumbnail: fs.readFileSync('./media/pp.jpg') },
+           jpegThumbnail: fs.readFileSync('./media/shiraori.jpg') },
            hydratedFooterText: wm,
            hydratedButtons: [{
              urlButton: {
@@ -196,7 +196,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
            {
              quickReplyButton: {
                displayText: '📍 Daftar',
-               id: '.daftar',
+               id: '.daftar %name.18',
              }
            }]
          }
