@@ -18,7 +18,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     out = await webp2png(media)
   }
   await conn.sendFile(m.chat, out, 'out.jpeg', '*Rill or fekx banhg ?*', m, false, {
-    thumbnail: fs.readFileSync('./media/fake.jpg')
+    thumbnail: fs.readFileSync('./fake.jpg')
   })
 }
 handler.help = ['toimg (reply)']
