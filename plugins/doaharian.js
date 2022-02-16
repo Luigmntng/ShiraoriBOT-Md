@@ -13,10 +13,10 @@ ${json.latin}
 Artinya:
 _"${json.translation}"_
 `.trim()
-  await conn.reply(m.chat, caption, footer, m)
+  await conn.reply(m.chat, caption, m)
 }
 handler.help = ['doaharian']
-handler.tags = ['internet']
+handler.tags = ['islam']
 handler.command = /^(doaharian)$/i
 
 module.exports = handler
