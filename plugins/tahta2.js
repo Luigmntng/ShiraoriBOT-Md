@@ -8,10 +8,10 @@ let handler  = async (m, { conn, text }) => {
   let tgl = d.toLocaleDateString('id-Id')
   let hari = d.toLocaleDateString('id-Id', { weekday: 'long' })
  text,
-await conn.sendFile(m.chat, global.API('xteam', '/tahta', { text, }, 'APIKEY'), 'Harta Tahta.png', 'Nih udah jadi Harta tahtamu...\n *_Tetap Support:_* *Drawl Nag*', m)
+await conn.sendFile(m.chat, global.API('leyscoders', '/tahta', { text, }, 'MIMINGANZ'), 'Harta Tahta.png', 'Nih udah jadi Harta tahtamu...\n *_Tetap Support:_* *Drawl Nag*', m)
 }
 handler.help = ['tahta'].map(v => v + '<teks>')
-handler.tags = ['nulis']
+handler.tags = ['internet']
 handler.command = /^tahta2$/i
 
 handler.limit = true
