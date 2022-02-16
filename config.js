@@ -9,6 +9,7 @@ global.APIs = { // API Prefix
   bg: 'http://bochil.ddns.net',
   xteam: 'https://api.xteam.xyz',
   melcanz: 'httpa://melcanz.com',
+  leyscoders: 'https://leyscoders-api.herokuapp.com',
   lol: 'https://api.lolhuman.xyz',
   zahir: 'https://zahirr-web.herokuapp.com',
   zeks: 'https://api.zeks.xyz',
@@ -19,6 +20,7 @@ global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
   'https://api.xteam.xyz': 'apivproject',
   'https://melcanz.com': 'elaina',
+  'https://leyscoders-api.herokuapp.com': 'MIMINGANZ',
   'https://api.lolhuman.xyz': 'rey2k21',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.xyz': 'apivinz',
