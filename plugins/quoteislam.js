@@ -13,8 +13,8 @@ ${json.author}
 `.trim()
   await conn.reply(m.chat, caption, m)
 }
-handler.help = ['quoteislam']
+handler.help = ['quotesislam']
 handler.tags = ['islam']
-handler.command = /^(quoteislam)$/i
+handler.command = /^(quotesislam)$/i
 
 module.exports = handler
