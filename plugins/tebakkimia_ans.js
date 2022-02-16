@@ -10,7 +10,7 @@ module.exports = {
             let json = JSON.parse(JSON.stringify(this.tebakkimia[id][1]))
             // m.reply(JSON.stringify(json, null, '\t'))
             if (m.text.toLowerCase() == json.unsur.toLowerCase().trim()) {
-                global.DATABASE._data.users[m.sender].exp += this.tebakkimia[id][2]
+                global.db.data.users[m.sender].exp += this.tebakkimia[id][2]
                 m.reply(`*Benar!*\n+${this.tebakkimia[id][2]} XP`)
                 clearTimeout(this.tebakkimia[id][3])
                 delete this.tebakkimia[id]
