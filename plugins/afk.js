@@ -2,14 +2,11 @@ var {WAMessageProto} = require('@adiwajshing/baileys')
 let fs = require ('fs')
 let fetch = require('node-fetch')
 let handler = async (m, { conn, command, text, usedPrefix }) => {
-  let user = global.DATABASE.data.users[m.sender]
+  let user = global.db.data.users[m.sender]
   user.afk = + new Date
   user.afkReason = text
 » User Name : ${conn.getName(m.sender)}
 » Alasan : ${text ? '' + text : 'No Text'}
-`.trim(), '', 'Ok', 'ok')
-
-}
 handler.help = ['afk <alasan>']
 handler.tags = ['group']
 handler.command = /^afk$/i
