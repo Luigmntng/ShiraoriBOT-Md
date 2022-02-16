@@ -1,33 +1,15 @@
-/**
-diupload oleh https://github.com/uhdahlah
-**/
-
-let axios = require("axios");
-let handler = async(m, { conn, text }) => {
-
-    if (!text) return conn.reply(m.chat, 'Masukan Nama Daerah', m)
-
-  await m.reply('Searching...')
-	axios.get(`https://api.lolhuman.xyz/api/cuaca/${text}?apikey=Deffbotz`).then ((res) => {
-	 	let hasil = `Cuaca Daerah *${text}*\n\nTempat : ${res.data.tempat}\nAngin : ${res.data.angin}\nCuaca : ${res.data.cuaca}\nDeskripsi : ${res.data.description}\nKelembapan : ${res.data.kelembapan}\nSuhu : ${res.data.suhu}\nUdara : ${res.data.udara}\nPermukaan laut :${res.data.permukaan_laut}`
-
-    conn.reply(m.chat, hasil, m)
-	})
+let fetch = require('node-fetch')
+let handler = async (m, { conn }) => {
+  let res = await fetch('https://api.waifu.pics/sfw/neko')
+  if (!res.ok) throw 'Error Website sedang down'
+  let json = await res.json()
+  if (!json.url) throw 'Error!'
+  conn.sendFile(m.chat, json.url, '', 'istri gweh', m, 0, { thumbnail: Buffer.alloc(0) })
 }
-handler.help = ['cuaca'].map(v => v + ' <daerah>')
-handler.tags = ['tools']
-handler.command = /^(cuaca)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
+handler.help = ['megumin']
+handler.tags = ['anime']
+handler.command = /^(megumin)$/i
 
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-handler.exp = 0
 handler.limit = true
 
 module.exports = handler
