@@ -23,11 +23,11 @@ function pickRandom(list) {
 
 // https//jalantikus.com/tips/katkatabucin/
 global.qislam = [
-"Dunia ini penjara bagi orang beriman dan surga bagi orang kafirt",
-"Hidup adalah sebuah perjalanan, yakni perjalanan dari Allah yang kemudian kembali lagi kepada Allah",
-"Angin tidak berhembus untuk menggoyangkan pepohonan, melainkan menguji kekuatan akarnya,
-"Setiap napas baru yang Allah izinkan untuk kamu ambil bukan hanya berkah, tetapi juga tanggung jawab",
-"Jangan menunggu kaya untuk bersedekah, justru sebaiknya bersedekahlah untuk bisa membuka pintu rezeki dan juga harta",
+"Dunia ini penjara bagi orang beriman dan surga bagi orang kafir",
+"Hidup adalah sebuah perjalanan yakni perjalanan dari Allah yang kemudian kembali lagi kepada Allah",
+"Angin tidak berhembus untuk menggoyangkan pepohonan melainkan menguji kekuatan akarnya"j,
+"Setiap napas baru yang Allah izinkan untuk kamu ambil bukan hanya berkah tetapi juga tanggung jawab",
+"Jangan menunggu kaya untuk bersedekah justru sebaiknya bersedekahlah untuk bisa membuka pintu rezeki dan juga harta",
 "Tidak ada pemberian yang lebih utama dari orangtua kepada anaknya, selain daripada akhlak yang mulia",
 "Manusia yang paling baik yaitu manusia yang baik budi pekertinya dan bermanfaat bagi orang lain",
 "Belajarlah untuk memaafkan, dirimu yang pertama dan kemudian yang lain",
