@@ -5,8 +5,15 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
   let user = global.db.data.users[m.sender]
   user.afk = + new Date
   user.afkReason = text
+  let nani = 'https://telegra.ph/file/bfad1ea59a4ebdaab8107.jpg'
+  await conn.sendButtonLoc(m.chat, await (await fetch(nani)).buffer(), `
+Fitur AFK Berhasil Diaktifkan!
+
 » User Name : ${conn.getName(m.sender)}
 » Alasan : ${text ? '' + text : 'No Text'}
+`.trim(), '', 'Ok', 'ok')
+
+}
 handler.help = ['afk <alasan>']
 handler.tags = ['group']
 handler.command = /^afk$/i
