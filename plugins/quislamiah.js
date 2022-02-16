@@ -25,7 +25,7 @@ function pickRandom(list) {
 global.qislam = [
 "Dunia ini penjara bagi orang beriman dan surga bagi orang kafir",
 "Hidup adalah sebuah perjalanan yakni perjalanan dari Allah yang kemudian kembali lagi kepada Allah",
-"Angin tidak berhembus untuk menggoyangkan pepohonan melainkan menguji kekuatan akarnya"j,
+"Angin tidak berhembus untuk menggoyangkan pepohonan melainkan menguji kekuatan akarnya",
 "Setiap napas baru yang Allah izinkan untuk kamu ambil bukan hanya berkah tetapi juga tanggung jawab",
 "Jangan menunggu kaya untuk bersedekah justru sebaiknya bersedekahlah untuk bisa membuka pintu rezeki dan juga harta",
 "Tidak ada pemberian yang lebih utama dari orangtua kepada anaknya, selain daripada akhlak yang mulia",
