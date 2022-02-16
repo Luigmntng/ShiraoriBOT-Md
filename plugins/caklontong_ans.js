@@ -9,7 +9,7 @@ handler.before = async function (m) {
     if (m.quoted.id == this.caklontong[id][0].id) {
         let json = JSON.parse(JSON.stringify(this.caklontong[id][1]))
         if (m.text.toLowerCase() == json.jawaban.toLowerCase().trim()) {
-            global.DATABASE._data.users[m.sender].exp += this.caklontong[id][2]
+            global.db.data.users[m.sender].exp += this.caklontong[id][2]
             m.reply(`*Benar!*\n+${this.caklontong[id][2]} XP${json.deskripsi ? `\n${json.deskripsi}` : ''}`)
             clearTimeout(this.caklontong[id][3])
             delete this.caklontong[id]
