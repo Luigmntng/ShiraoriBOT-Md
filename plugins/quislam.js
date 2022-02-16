@@ -45,7 +45,7 @@ global.qislam = [
 "Bersyukurlah jika Allah memberimu ujian hidup, karena dengan demikian, Allah memberikanmu kesempatan untuk berubah menjadi manusia yang lebih baik lagi",
 "Kebanyakan dari kita tidak mensyukuri apa yang sudah kita miliki tetapi kita menyesali apa yang belum kita capa",
 "Ciri dari kelalaian manusia ialah ketika ia seringkali mengeluh ketika menerima ujian pun jarang bersyukur ketika mendapatkan nikmat yang luar biasa",
-"Dunia hanyalah satu tetes nikmat Allah di antara lautan nikmatNya Jadi apakah kamu puas hanya dengan memiliki dunia?
+"Dunia hanyalah satu tetes nikmat Allah di antara lautan nikmatNya Jadi apakah kamu puas hanya dengan memiliki dunia?",
 "Bila tak kunyatakan keindahanMu dalam kata Kusimpan kasihMu dalam dad  Jalaluddin Rumi",
 "Apabila sesuatu yang kau senangi tidak terjadi maka senangilah apa yang terjadi  Ali bin Abi Thalib",
 "Memang sangat sulit untuk bersabar tetapi menyianyiakan pahala dari kesabaran itulah yang lebih buruk  Abu Bakar",
