@@ -12,7 +12,7 @@ await conn.sendFile(m.chat, global.API('leyscoders', '/tahta', { text, }, 'MIMIN
 }
 handler.help = ['tahta'].map(v => v + '<teks>')
 handler.tags = ['internet']
-handler.command = /^tahta2$/i
+handler.command = /^tahta$/i
 
 handler.limit = true
 handler.premium = true
